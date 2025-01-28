@@ -32,3 +32,13 @@ päringukeel - язык запроса
 relatsiooni andmebaas - relation database / реляционная база данных
 
 seos - связь
+
+Primary key - первичный ключ / primaarne võti
+
+Foreign key - вторичный ключ / välisvõti
+
+unique - уникальные / unikaalne
+
+check / выбор / valik
+
+SQL - Strucutre Query Launguage
