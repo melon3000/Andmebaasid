@@ -1,0 +1,36 @@
+#ANDMEBAASID
+
+Andmebaas - AB
+
+andmebaaside haldus -  Управление БД
+
+andmebaasi haldussüsteem ABHS - Система упавления БД -СУБД 
+(SQL SERVER / XAMPP / ORACLE / MS ACCESS )
+
+andmed - данные
+
+tabel - таблица
+
+veerg = väli - ( столбец = поле)
+
+rida = kirje - (строка = запись)
+
+päring - запрос *(query)
+
+loo - создать
+
+laadi alla - скачать
+
+laadi üles - загрузить/закачать куда-либо*
+
+rakendus - приложение
+
+varundamine -  backup / рез. коп
+
+taastamine - восстановление
+
+päringukeel - язык запроса
+
+relatsiooni andmebaas - relation database / реляционная база данных
+
+seos - связь
