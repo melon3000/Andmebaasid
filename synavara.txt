@@ -41,4 +41,4 @@ unique - уникальные / unikaalne
 
 check / выбор / valik
 
-SQL - Strucutre Query Launguage
+SQL / Strucutre Query Launguage / Struktuurne päringukeel
