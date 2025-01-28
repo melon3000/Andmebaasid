@@ -1,5 +1,3 @@
-#ANDMEBAASID
-
 Andmebaas - AB
 
 andmebaaside haldus -  Управление БД
