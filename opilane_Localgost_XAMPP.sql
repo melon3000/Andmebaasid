@@ -95,7 +95,7 @@ Values('Valik D', 4, 4 )
 --LOO TABEL OPPIMINE
 CREATE TABLE oppimine
 (
-oppimineId int primary key identity(1,1),
+oppimineId int primary key AUTO_INCREMENT,
 aine text not null, 
 aasta char(4),
 opetaja varchar(25),
