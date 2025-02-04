@@ -131,8 +131,6 @@ Values('Inglise keel', 2025, 'Irina Merkulova', 1, 5)
 ---------------------------------------------------------------------------------------------------------------------------------
 --4.02.2025/tunnitöö funktsioonid sql opilane tabeliga
 
-select * from opilane
-
 --LISAB OPILANE TABELISSE
 CREATE PROCEDURE LisaOpilane
 @nimi varchar(25),
