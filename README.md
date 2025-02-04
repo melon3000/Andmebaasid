@@ -11,5 +11,6 @@
 ### LEIDA OPILANE 
 ![Hõiva](https://github.com/user-attachments/assets/b94e5833-42f9-489b-b8cd-468bfab97369)
 
-### MUUDA OPILANE STIP
+### MUUDA OPILANE STIP 
+Kasuta BOOLEAN andme tüüp
 ![Hõiva](https://github.com/user-attachments/assets/4c68c005-db4c-4df7-8174-05a7f97858a8)
