@@ -65,7 +65,7 @@ DROP PROCEDURE KustutaLinn;
 
 --FUNC MIS OTSIB LINN ESIMESE TÄHTE JARGI
 CREATE PROCEDURE LinnaOtsing
-@taht char(1)
+@taht CHAR(1)
 AS 
 BEGIN
 SELECT * FROM Linn
@@ -74,6 +74,28 @@ WHERE linnNIMI LIKE @taht + '%';
 END;
 --kutse
 EXEC LinnaOtsing '%'
+
+
+--TABELI UUENDAMINE 10% võrra
+UPDATE Linn SET rahvaARV *= 1.1
+SELECT * FROM Linn
+UPDATE Linn SET rahvaARV *= 1.1
+WHERE linnID = 1
+SELECT * FROM Linn
+
+
+CREATE PROCEDURE rahvaArvuUuendus
+@linnaID INT,
+@koef DECIMAL(2,1)
+AS
+BEGIN
+SELECT * FROM Linn;
+UPDATE Linn SET rahvaARV *= @koef
+WHERE linnID = @linnaID
+SELECT * FROM Linn;
+END;
+
+EXEC rahvaArvuUuendus 2,2
 
 
 --KASUTAME XAMPP
