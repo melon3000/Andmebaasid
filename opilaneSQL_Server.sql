@@ -127,3 +127,69 @@ SELECT * FROM oppimine;
 
 INSERT INTO oppimine(aine, aasta, opetaja, opilaneID, hinne)
 Values('Inglise keel', 2025, 'Irina Merkulova', 1, 5)
+
+---------------------------------------------------------------------------------------------------------------------------------
+--4.02.2025/tunnitöö funktsioonid sql opilane tabeliga
+
+select * from opilane
+
+--LISAB OPILANE TABELISSE
+CREATE PROCEDURE LisaOpilane
+@nimi varchar(25),
+@pnimi varchar(25),
+@synniaeg date,
+@stip bit,
+@aadress text,
+@k_hind decimal(2,1)
+AS
+BEGIN
+SELECT * FROM opilane
+INSERT INTO opilane(eesnimi, perenimi, synniaeg,stip,aadress,keskmine_hind)
+VALUES(@nimi, @pnimi, @synniaeg, @stip, @aadress, @k_hind);
+SELECT * FROM opilane
+END;
+
+EXEC LisaOpilane 'Milan', 'Petrovski', '2025-05-22', 1, 'TALLINN', 4.2 
+
+
+--KUSTUTAB OPILANE TABELIST
+CREATE PROCEDURE OpilaneKustuta
+@opID int
+AS 
+BEGIN
+SELECT * FROM opilane
+DELETE FROM opilane 
+WHERE opilaneId = @opID
+SELECT * FROM opilane
+END;
+
+EXEC OpilaneKustuta '2'
+
+
+--OTSIB OPILANE ESIMESE TÄHTE JARGI
+CREATE PROCEDURE OpilaneOtsing
+@taht CHAR(1)
+AS 
+BEGIN
+SELECT * FROM opilane
+WHERE eesnimi LIKE @taht + '%';
+SELECT * FROM opilane
+END;
+
+EXEC OpilaneOtsing 'M'
+
+
+--MUUDAB OPILANE STIP
+CREATE PROCEDURE MuudaOpilaseStip
+@MopID INT,
+@Mstip BIT
+AS 
+BEGIN
+SELECT * FROM opilane
+UPDATE opilane SET stip = @Mstip
+WHERE opilaneId = @MopID
+SELECT * FROM opilane
+END;
+
+EXEC MuudaOpilaseStip 1, 0
+
