@@ -111,3 +111,35 @@ SELECT * FROM oppimine;
 
 INSERT INTO oppimine(aine, aasta, opetaja, opilaneID, hinne)
 Values('Inglise keel', 2025, 'Irina Merkulova', 1, 5)
+
+---------------------------------------------------------------------------------------------------------------------------------
+--4.02.2025/tunnitöö funktsioonid sql opilane tabeliga
+
+--LISAB OPILANE TABELISSE
+BEGIN
+SELECT * FROM opilane;
+INSERT INTO opilane(eesnimi, perenimi, synniaeg,stip,aadress,keskmine_hind)
+VALUES(nimi, pnimi, synniaeg, stip, aadress, k_hind);
+SELECT * FROM opilane;
+END;
+
+--KUSTUTA OPILANE ID-ga
+BEGIN
+SELECT * FROM opilane;
+DELETE FROM opilane WHERE opilaneId = opID;
+SELECT * FROM opilane;
+END
+
+--LEIDA OPILANE ESIMESE TAHEGA
+BEGIN
+SELECT * FROM opilane
+WHERE eesnimi LIKE CONCAT(taht, '%'); 
+SELECT * FROM opilane;
+END;
+
+--MUUDA OPILANE STIP
+BEGIN
+SELECT * FROM opilane;
+UPDATE opilane SET stip = Mstip WHERE opilaneId = MopID;
+SELECT * FROM opilane;
+END;
