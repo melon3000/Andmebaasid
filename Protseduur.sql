@@ -141,4 +141,107 @@ UPDATE Linn SET rahvaARV=rahvaARV*koef
 WHERE linnID = linnaID;
 SELECT * FROM Linn;
 END;
+-------------------------------------------------------------------07.02.2025
+--PROTSEDUURID ###
 
+select * from Linn
+
+CREATE PROCEDURE lisaLinn
+@lnimi varchar(30),
+@rarv int
+AS
+BEGIN
+INSERT INTO Linn(linnNIMI, rahvaARV)
+VALUES (@lnimi, @rarv);
+SELECT * FROM Linn
+END;
+
+delete from linn where linnID = 5
+
+--UUE VEERU LISAMINE
+ALTER TABLE linn ADD test int;
+
+--VEERU KUSTUTAMINE 
+ALTER TABLE linn DROP COLUMN test;
+
+
+
+CREATE PROCEDURE veeruLisaKustuta
+@valik varchar(20),
+@veerunimi varchar(20),
+@tyyp varchar(20) = NULL
+AS
+BEGIN
+DECLARE @sqltegevus as varchar(max)
+set @sqltegevus=case
+when @valik='add' then concat('ALTER TABLE linn ADD ', @veerunimi, ' ', @tyyp)
+when @valik='drop' then concat('ALTER TABLE linn DROP COLUMN ', @veerunimi)
+END;
+print @sqltegevus;
+BEGIN
+EXEC (@sqltegevus);
+END
+END;
+
+EXEC veeruLisaKustuta @valik='add', @veerunimi='test3', @tyyp='int';
+
+EXEC veeruLisaKustuta @valik='DROP', @veerunimi='test';
+
+SELECT * FROM linn
+
+
+
+--PROCEDURE VEERULISAKUSTUTA TABELIS
+CREATE PROCEDURE veeruLisaKustutaTabelis
+@valik varchar(20),
+@tabelinimi varchar(20),
+@veerunimi varchar(20),
+@tyyp varchar(20) = NULL
+AS
+BEGIN
+DECLARE @sqltegevus as varchar(max)
+set @sqltegevus=case
+when @valik='add' then concat('ALTER TABLE ', @tabelinimi, ' ADD ', @veerunimi, ' ', @tyyp)
+when @valik='drop' then concat('ALTER TABLE ', @tabelinimi, ' DROP COLUMN ', @veerunimi)
+END;
+print @sqltegevus;
+BEGIN
+EXEC (@sqltegevus);
+END
+END;
+
+exec veeruLisaKustutaTabelis
+
+
+EXEC veeruLisaKustutaTabelis @valik='add', @tabelinimi='linn', @veerunimi='test3', @tyyp='int';
+
+EXEC veeruLisaKustutaTabelis @valik='DROP', @tabelinimi='linn', @veerunimi='test3';
+
+SELECT * FROM linn
+
+
+--protseduur tingimused
+
+CREATE PROCEDURE rahvaHinnang
+@piir int
+AS
+BEGIN
+SELECT linnNIMI, IIF(rahvaARV < @piir, 'vaike linn', 'suur linn') as Hinnang
+FROM linn;
+END;
+
+EXEC rahvaHinnang 555555;
+
+DROP PROCEDURE rahvaHinnang;
+
+--AGREGAAT FUNKTSIOONID; SUM() AVG() MIN() MAX() COUNT()
+
+CREATE PROCEDURE kokkuRahvaARV
+
+AS
+BEGIN
+SELECT SUM(rahvaARV) AS 'KokkuRahvaARV', AVG(rahvaARV) AS 'Keskine rahvaarv', COUNT(*) AS 'Linnade arv'
+FROM linn;
+END;
+
+DROP PROCEDURE kokkuRahvaARV
