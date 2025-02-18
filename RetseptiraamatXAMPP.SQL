@@ -89,8 +89,36 @@ VALUES('2022-12-03', 1),
 ('2005-11-08', 5);
 
 
-#Loo funktsioon "Addrecept"
+#Loo funktsioon "Addrecept"  
 BEGIN
 INSERT INTO retsept(retsept_nimi, kirjeldus, juhend, sisestatud_kp, kasutaja_id, kategooria_id)
 VALUES(retsept_nimi,kirjeldus,juhend,sisetatud_kp,kasutaja_id, kategooria_id);
 END;
+
+#Loo funktsioon "Addkoostis"
+BEGIN
+INSERT INTO Koostis(kogus, retsept_retsept_id, toiduaine_id, yhik_id)
+values(kogus, retsept_retsept_id, toiduaine_id, yhik_id);
+end;
+
+
+#Loo funktsioon "Addtehtud"
+BEGIN
+INSERT INTO Tehtud(tehtud_id, tehtud_kp, retsept_id)
+values(tehtud_id, tehtud_kp, retsept_id);
+end;
+
+
+#Loo funktsioon "Addkokad"
+CREATE TABLE Kokad(
+tehtud_id int primary key AUTO_INCREMENT,
+kokk_nimi varchar(30),
+kokk_perenimi varchar(30),
+retsept_id int,
+foreign key (retsept_id) references Retsept(retsept_id))
+
+
+BEGIN
+INSERT INTO Addkokad(tehtud_id, kokk_nimi , kokk_perenimi)
+values(tehtud_id, kokk_nimi, kokk_perenimi);
+end;
