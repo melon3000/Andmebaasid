@@ -89,4 +89,8 @@ VALUES('2022-12-03', 1),
 ('2005-11-08', 5);
 
 
-
+#Loo funktsioon "Addrecept"
+BEGIN
+INSERT INTO retsept(retsept_nimi, kirjeldus, juhend, sisestatud_kp, kasutaja_id, kategooria_id)
+VALUES(retsept_nimi,kirjeldus,juhend,sisetatud_kp,kasutaja_id, kategooria_id);
+END;
