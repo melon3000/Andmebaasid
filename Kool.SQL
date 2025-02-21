@@ -18,7 +18,7 @@ insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (6,
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (7, 'Clemmy', 'Christiensen', 'cchristiensen6@ihg.com', 'Male', 7.42);
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (8, 'Tine', 'Adacot', 'tadacot7@meetup.com', 'Female', 13.32);
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (9, 'Gar', 'Vasyutin', 'gvasyutin8@phoca.cz', 'Male', 42.04);
-Collie', 'Kelleher', 'cinsert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (10, 'Donnie', 'Baddow', 'dbaddow9@trellian.com', 'Female', 75.85);
+insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (10, 'Donnie', 'Baddow', 'dbaddow9@trellian.com', 'Female', 75.85);
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (11, 'Cynthie', 'Tripp', 'ctrippa@ifeng.com', 'Female', 37.03);
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (12, 'Orsola', 'Copyn', 'ocopynb@jiathis.com', 'Female', 40.49);
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (13, 'Madonna', 'Siney', 'msineyc@slashdot.org', 'Female', 24.67);
@@ -57,7 +57,7 @@ insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (45
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (46, 'Ty', 'Challener', 'tchallener19@indiatimes.com', 'Male', 23.57);
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (47, 'Fraser', 'StrAND', 'fstrand1a@nhs.uk', 'Male', 60.49);
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (48, 'Doreen', 'Sherrum', 'dsherrum1b@soup.io', 'Female', 1.55);
-insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (49, 'kelleher1c@un.org', 'Female', 57.85);
+insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (49, 'Collie', 'Kelleher', 'ckelleher1c@un.org', 'Female', 57.85);
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (50, 'Jordana', 'Allston', 'jallston1d@umich.edu', 'Female', 83.38);
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (51, 'Colan', 'Cauldfield', 'ccauldfield1e@deliciousdays.com', 'Male', 72.14);
 insert into opilane (opilaneID, eesnimi, perenimi, epost, sugu, stip) values (52, 'Cathee', 'Knoble', 'cknoble1f@fema.gov', 'Female', 83.96);
@@ -175,3 +175,72 @@ SELECT perenimi, stip FROM opilane ORDER BY stip DESC LIMIT 5
 --kombineerime tingimused
 -- eesnimed sisaldavad A, stip (60;70)
 SELECT eesnimi, stip FROM opilane WHERE(stip BETWEEN 60 AND 70) AND ((eesnimi LIKE '%a%') OR (eesnimi LIKE 'a%') OR (eesnimi LIKE '%a'));
+
+
+
+create table AUTOD (
+	Mark VARCHAR(20),
+	RegNr VARCHAR(7) PRIMARY KEY,
+	Aasta VARCHAR(4),
+	RegPiir INT
+);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Lamborghini', '#f65d5b', 2007, 1);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Mitsubishi', '#7d8d45', 1996, 2);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Isuzu', '#68dfa7', 1997, 2);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Toyota', '#0f3b60', 2011, 2);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Lotus', '#e63114', 1984, 2);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Mercedes-Benz', '#552188', 2010, 2);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Mitsubishi', '#61be1e', 1986, 1);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Cadillac', '#4eaae6', 2011, 1);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Infiniti', '#c78f06', 2010, 2);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Mercedes-Benz', '#612d36', 1985, 1);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Toyota', '#f90f2a', 2006, 1);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Subaru', '#97f91c', 1991, 1);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Volvo', '#678c6e', 2005, 1);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Suzuki', '#6f023b', 1986, 1);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Dodge', '#e9377c', 2009, 2);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Dodge', '#f12169', 2011, 1);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('GMC', '#24975b', 1997, 2);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Lincoln', '#9cdd0b', 2004, 2);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('BMW', '#2b5b4a', 2005, 2);
+insert into AUTOD (Mark, RegNr, Aasta, RegPiir) values ('Kia', '#d54e93', 2010, 1);
+
+SELECT * FROM autod ORDER BY Aasta DESC;
+
+--SELECT DISTINCT TEEB NIMODI ET VÄLJENDAB SAMA MARK AINULT 1 KORD
+SELECT DISTINCT mark FROM AUTOD
+
+SELECT RegNr, Aasta FROM AUTOD WHERE  Aasta <= 1993
+
+SELECT RegNr, Aasta FROM AUTOD WHERE  Aasta <= 1993 ORDER BY RegNr
+
+SELECT MIN(Aasta) as ' varasem väljalaskeaasta' FROM AUTOD
+
+--  Muuda registrinumbrit autol, mille id on 3 (uus number 333 KKK)
+
+SELECT * FROM AUTOD
+
+UPDATE AUTOD
+	SET RegNr = '333 KKK'
+	WHERE RegNr = '#2b5b4a'
+	SELECT * FROM AUTOD
+
+
+DELETE FROM AUTOD 
+	WHERE RegNr = '#552188'
+
+
+CREATE PROCEDURE LISAAUTOD
+@Mark VARCHAR(20),
+@RegNr VARCHAR(7),
+@Aasta VARCHAR(4),
+@RegPiir INT
+AS
+BEGIN
+INSERT INTO AUTOD(Mark, RegNr, Aasta, RegPiir)
+VALUES (@Mark, @RegNr, @Aasta, @RegPiir);
+SELECT * FROM AUTOD
+END;
+
+EXEC LISAAUTOD 'Nissan', '555 NNN','2007', 2
+
