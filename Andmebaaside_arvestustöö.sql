@@ -74,6 +74,7 @@ INSERT INTO books (name, pagecount, point, authorID, typeID) VALUES
 ('Harry Potter', 400, 95, 1, 1),
 ('1984', 328, 90, 2, 2),
 ('Sõda ja rahu', 1225, 88, 3, 3);
+('Sõda tolm', 125, 8, 2, 3);
 
 INSERT INTO borrows (studentID, bookID, takenDate, broughtDate) VALUES 
 (1, 1, '2025-03-01', '2025-03-10'),
@@ -86,3 +87,37 @@ INSERT INTO lisaülesannetabel (õpilane, tuju, kellaaeg) VALUES
 (3, 'Üllatunud', '13:45:00');
 
 
+--Näitab ühe autori kõik raamatud
+SELECT BOOKS.name as Raamatu_nimi, authors.name as Autori_nimi
+FROM BOOKS
+INNER JOIN authors ON authors.authorID = BOOKS.authorID
+WHERE authors.name = 'George';
+
+
+--Näitab ühe sugu järgi õpilaste andmed
+SELECT name, surname, birthdate, gender, class, point
+FROM students
+WHERE students.gender = 'mees'
+
+
+--Näitab nime jargi laenutused
+SELECT students.name AS Student_Nimi, students.surname AS Student_Perenimi, books.name AS BookName, borrows.takenDate, borrows.broughtDate
+FROM borrows
+INNER JOIN students ON borrows.studentID = students.studentID
+INNER JOIN books ON borrows.bookID = books.bookID
+WHERE students.name = 'Liis';
+
+--Arvutab raamatu keskmine lehekulje arv
+SELECT AVG(pagecount) AS Keskmine_Lehekulgede_Arv
+FROM books;
+
+--Näitab mitte tagastatud raamatuid
+SELECT books.name AS Mitte_tagastatud_raamatu_nimi
+FROM books
+INNER JOIN borrows ON books.bookID = borrows.bookID
+WHERE broughtDate IS NOT NULL
+
+--Näitab õpilsate vanus
+SELECT name, surname, 
+       DATEDIFF(YEAR, birthdate, GETDATE()) AS Vanus
+FROM students;
