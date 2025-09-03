@@ -19,10 +19,12 @@ mark VARCHAR(10),
 
 CREATE TABLE Logi(
 logiId INT PRIMARY KEY IDENTITY(1,1),
-kuupaev DATE,
+kuupaev DATETIME,
 andmed VARCHAR(100),
 kasutaja VARCHAR(20)
 );
+
+DROP TABLE LOGI
 
 ----------
 --lisamine triger
