@@ -180,3 +180,66 @@ end
 drop procedure kallim_hind
 
 exec kallim_hind
+
+--------------------------ÜLESANNE
+
+-- 1. Loome andmebaasi
+CREATE DATABASE trigerstabelid;
+USE trigerstabelid;
+
+
+-- 2. Loome tabelid
+CREATE TABLE toodekategooria (
+    toodekategooriaID INT IDENTITY(1,1) PRIMARY KEY,
+    toodekategooria NVARCHAR(100) UNIQUE,
+    kirjeldus NVARCHAR(MAX)
+);
+
+CREATE TABLE toode (
+    toodeID INT IDENTITY(1,1) PRIMARY KEY,
+    toodeNimetus NVARCHAR(100) UNIQUE,
+    hind DECIMAL(10,2),
+    toodekategooriaID INT,
+    FOREIGN KEY (toodekategooriaID)
+        REFERENCES toodekategooria(toodekategooriaID)
+);
+
+-- 3. Andmete sisestamine
+INSERT INTO toodekategooria (toodekategooria, kirjeldus)
+VALUES
+(N'Electronics', N'Devices like phones, laptops, and accessories'),
+(N'Furniture', N'Various types of furniture for home and office'),
+(N'Clothing', N'Apparel for men, women, and children'),
+(N'Toys', N'Toys and games for children of all ages'),
+(N'Food', N'Groceries and other consumables');
+
+INSERT INTO toode (toodeNimetus, hind, toodekategooriaID)
+VALUES
+(N'Smartphone', 499.99, 1),
+(N'Office Chair', 129.99, 2),
+(N'T-Shirt', 19.99, 3),
+(N'Lego Set', 59.99, 4),
+(N'Apple', 1.50, 5);
+
+CREATE LOGIN toodehaldur WITH PASSWORD = 'ParoolSUPER123!';
+CREATE LOGIN kataloogihaldur WITH PASSWORD = 'ParoolSUPER223!';
+CREATE LOGIN vaataja WITH PASSWORD = 'ParoolSUPER323!';
+
+CREATE USER toodehaldur FOR LOGIN toodehaldur;
+CREATE USER kataloogihaldur FOR LOGIN kataloogihaldur;
+CREATE USER vaataja FOR LOGIN vaataja;
+
+GRANT CONNECT TO toodehaldur;
+GRANT CONNECT TO kataloogihaldur;
+GRANT CONNECT TO vaataja;
+
+GRANT INSERT, UPDATE, DELETE ON OBJECT::dbo.toode TO toodehaldur;
+GRANT INSERT, UPDATE, SELECT ON OBJECT::dbo.toodekategooria TO kataloogihaldur;
+GRANT SELECT ON OBJECT::dbo.toode TO vaataja;
+GRANT SELECT ON OBJECT::dbo.toodekategooria TO vaataja;
+
+SELECT 
+	CONCAT(table_schema, '.', table_name) AS scope,
+	grantee,
+	privilege_type
+FROM INFORMATION_SCHEMA.TABLE_PRIVILEGES
